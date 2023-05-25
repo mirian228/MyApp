@@ -13,7 +13,7 @@ public class DependencyInjectionController {
 
     // Using @Qualifier annotation to specify that we want to use CricketCoach class as a dependency injected to Coach, useful when we have multiple dependencies
     @Autowired
-    public DependencyInjectionController(@Qualifier("cricketCoach")Coach myCoach) {
+    public DependencyInjectionController(@Qualifier("SwimCoach")Coach myCoach) {
         this.myCoach = myCoach;
     }
 
