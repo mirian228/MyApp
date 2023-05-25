@@ -1,5 +1,8 @@
 package com.mirian.myapp.dependencyinjection;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TrackCoach implements Coach{
     @Override
     public String getDailyWorkout() {
