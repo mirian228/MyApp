@@ -10,28 +10,33 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class MyAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MyAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MyAppApplication.class, args);
+    }
 
-	@Bean
-	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
-		return runner -> {
-			createStudent(studentDAO);
-		};
-	}
+    @Bean
+    public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
+        return runner -> {
+            // createStudent(studentDAO);
+            int id = 1;
+            Student foundStudent = studentDAO.read(id);
+            System.out.print("ID: " + foundStudent.getId() + "\n"
+					+ "Name: " + foundStudent.getFirstName() + "\n"
+					+ "Surname: " + foundStudent.getLastName() + "\n"
+					+ "Email: " + foundStudent.getEmail());
+        };
+    }
 
-	private void createStudent(StudentDAO studentDAO) {
-		//Create student object
-		System.out.println("Creating new student object...");
-		Student tempStudent = new Student("Paul", "Doe", "paul@gmail.com");
-		//Save student object
-		System.out.println("Saving the student....");
-		studentDAO.save(tempStudent);
-		// display id of the saved student
-		System.out.println("Saved student. Generated ID:" + tempStudent.getId());
-	}
-
+    private void createStudent(StudentDAO studentDAO) {
+        //Create student object
+        System.out.println("Creating new student object...");
+        Student tempStudent = new Student("Paul", "Doe", "paul@gmail.com");
+        //Save student object
+        System.out.println("Saving the student....");
+        studentDAO.save(tempStudent);
+        // display id of the saved student
+        System.out.println("Saved student. Generated ID:" + tempStudent.getId());
+    }
 
 
 }
