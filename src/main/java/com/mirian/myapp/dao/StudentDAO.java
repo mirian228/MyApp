@@ -4,13 +4,13 @@ import com.mirian.myapp.model.Student;
 
 import java.util.List;
 
-public interface StudentDAO {
+public interface StudentDAO extends IAbstractDAO<Student>{
     void save(Student theStudent);
 
-    Student read(int id);
+    Student readById(int id);
 
     List<Student> readAll();
     void update(Student theStudent);
 
-    void delete(Student theStudent);
+    void deleteById(int id);
 }
